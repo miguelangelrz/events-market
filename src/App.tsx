@@ -1,20 +1,21 @@
-import EventsList from "./views/EventsList/EventsList.tsx";
 import { Box, Container } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getEvents } from "./slice/eventsSlice.ts";
+import { AppDispatch } from "./store.ts";
+import EventsView from "./views/EventsList/EventsView.tsx";
 
 function App() {
-  const [events, setEvents] = useState([]);
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    fetch("https://run.mocky.io/v3/5fff4edb-8f5c-4dd6-a305-2935268be086")
-      .then((response) => response.json())
-      .then((response) => setEvents(response));
-  }, []);
+    dispatch(getEvents());
+  }, [dispatch]);
 
   return (
     <Box p={3}>
       <Container maxWidth="sm">
-        <EventsList events={events} />
+        <EventsView />
       </Container>
     </Box>
   );

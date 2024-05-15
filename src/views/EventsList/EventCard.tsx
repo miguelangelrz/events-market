@@ -4,7 +4,7 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import { SportEvent } from "../../models/SportEvent.ts";
+import { SportEvent } from "../../types/SportEvent.ts";
 import { Fragment } from "react";
 
 type EventCardProps = {

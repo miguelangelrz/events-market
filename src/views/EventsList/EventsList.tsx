@@ -1,6 +1,6 @@
 import { Box, List, ListItem } from "@mui/material";
 import EventCard from "./EventCard.tsx";
-import { SportEvent } from "../../models/SportEvent.ts";
+import { SportEvent } from "../../types/SportEvent.ts";
 
 type EventsListProps = {
   events: SportEvent[];
