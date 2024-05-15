@@ -1,12 +1,20 @@
 import { Box, List, ListItem } from "@mui/material";
 import EventCard from "./EventCard.tsx";
+import { SportEvent } from "../../models/SportEvent.ts";
 
-function EventsList() {
+type EventsListProps = {
+  events: SportEvent[];
+};
+
+function EventsList({ events }: EventsListProps) {
   return (
     <Box bgcolor="cyan">
       <List>
-        <ListItem><EventCard /></ListItem>
-        <ListItem><EventCard /></ListItem>
+        {events.map((event) => (
+          <ListItem key={event.id}>
+            <EventCard event={event} />
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
