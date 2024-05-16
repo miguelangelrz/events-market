@@ -1,21 +1,10 @@
-import { MouseEvent } from "react";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-} from "@mui/material";
+import { List, ListItem } from "@mui/material";
 import { DrawerProps } from "@mui/material/Drawer/Drawer";
 import { useAppDispatch, useAppSelector } from "../../../hooks/store.ts";
 import { UserMarketSelection } from "../../../types/MarketSelection.ts";
 import { removeSelection } from "../../../slice/selectionsSlice.ts";
-import CloseIcon from "@mui/icons-material/Close";
+import UserSelectionCard from "./UserSelectionCard.tsx";
+import RightSideDrawer from "../../../components/Drawer/RightSideDrawer.tsx";
 
 function MarketSelectionsView({ open, onClose, anchor }: DrawerProps) {
   const dispatch = useAppDispatch();
@@ -25,38 +14,16 @@ function MarketSelectionsView({ open, onClose, anchor }: DrawerProps) {
     dispatch(removeSelection(selection.id));
   };
 
-  const close = (e: MouseEvent) => onClose?.(e, "backdropClick");
-
   return (
-    <Drawer open={open} onClose={onClose} anchor={anchor}>
-      <Box width="100vw" maxWidth={600} p={3}>
-        <Box display="flex" justifyContent="flex-end">
-          <IconButton onClick={close}>
-            <CloseIcon />
-          </IconButton>
-        </Box>
-        <List>
-          {selections.map((selection) => (
-            <ListItem key={selection.id}>
-              <Card sx={{ width: "100%" }}>
-                <CardContent>
-                  <CardHeader
-                    title={`${selection.name} - ${selection.marketName}`}
-                    subheader={selection.eventName}
-                  />
-                  <CardContent>{selection.price}</CardContent>
-                  <CardActions>
-                    <Button size="small" onClick={onDelete(selection)}>
-                      Delete
-                    </Button>
-                  </CardActions>
-                </CardContent>
-              </Card>
-            </ListItem>
-          ))}
-        </List>
-      </Box>
-    </Drawer>
+    <RightSideDrawer open={open} onClose={onClose} anchor={anchor}>
+      <List>
+        {selections.map((selection) => (
+          <ListItem key={selection.id}>
+            <UserSelectionCard selection={selection} onDelete={onDelete} />
+          </ListItem>
+        ))}
+      </List>
+    </RightSideDrawer>
   );
 }
 
