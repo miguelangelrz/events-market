@@ -9,7 +9,7 @@ type EventsListProps = {
 function EventsList({ events }: EventsListProps) {
   return (
     <Box>
-      <List>
+      <List className="events-list">
         {events
           .filter((e) => e.markets.length !== 0)
           .map((event) => (

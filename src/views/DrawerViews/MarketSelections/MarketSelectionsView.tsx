@@ -16,7 +16,7 @@ function MarketSelectionsView({ open, onClose, anchor }: DrawerProps) {
 
   return (
     <RightSideDrawer open={open} onClose={onClose} anchor={anchor}>
-      <List>
+      <List className="user-selections-list">
         {selections.map((selection) => (
           <ListItem key={selection.id}>
             <UserSelectionCard selection={selection} onDelete={onDelete} />
