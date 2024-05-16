@@ -90,6 +90,14 @@ function EventCard({ event }: EventCardProps) {
                     value={selection.id}
                     onClick={toggleSelection(selection)(market)(event)}
                     selected={isSelectionSelected(selection.id, selections)}
+                    sx={{
+                      "&.Mui-selected": {
+                        backgroundColor: "#8AD694",
+                        "&:hover": {
+                          backgroundColor: "#99d7a3"
+                        }
+                      },
+                    }}
                   >
                     <Stack>
                       <Typography>{selection.name}</Typography>
