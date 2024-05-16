@@ -8,13 +8,15 @@ type EventsListProps = {
 
 function EventsList({ events }: EventsListProps) {
   return (
-    <Box bgcolor="cyan">
+    <Box>
       <List>
-        {events.map((event) => (
-          <ListItem key={event.id}>
-            <EventCard event={event} />
-          </ListItem>
-        ))}
+        {events
+          .filter((e) => e.markets.length !== 0)
+          .map((event) => (
+            <ListItem key={event.id}>
+              <EventCard event={event} />
+            </ListItem>
+          ))}
       </List>
     </Box>
   );

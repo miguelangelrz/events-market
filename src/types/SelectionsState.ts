@@ -1,5 +1,5 @@
-import { MarketSelection } from "./MarketSelection.ts";
+import { UserMarketSelection } from "./MarketSelection.ts";
 
 export type SelectionsState = {
-  selections: MarketSelection[];
+  selections: UserMarketSelection[];
 };

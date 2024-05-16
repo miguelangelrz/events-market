@@ -3,7 +3,7 @@ import eventsReducer from "./slice/eventsSlice.ts";
 import selectionsReducer from "./slice/selectionsSlice.ts";
 
 const store = configureStore({
-  reducer: { events: eventsReducer, selections: selectionsReducer },
+  reducer: { events: eventsReducer, userSelections: selectionsReducer },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

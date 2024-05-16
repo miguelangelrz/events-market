@@ -1,11 +1,10 @@
-import { EventsState } from "../../types/EventsState.ts";
-import { useSelector } from "react-redux";
 import EventsList from "./EventsList.tsx";
+import { useAppSelector } from "../../hooks/store.ts";
 
 function EventsView() {
-  const { events, loading, error } = useSelector(
-    (state: { events: EventsState }) => state.events,
-  );
+  const { events, loading, error } = useAppSelector((state) => state.events);
+
+  console.log("#events", events)
 
   if (loading) {
     return <>loading</>;
