@@ -1,27 +1,49 @@
-# React + TypeScript + Vite
+# Events market
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a technical assessment for Iridian
 
-Currently, two official plugins are available:
+## How to run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You will require `node` (`npm`) to run the project. Then you need to install 
+dependencies and run the project as developer
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```
+npm install
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+If you want to run the Cypress test you could use while running the dev 
+application
+
+```
+npm run test
+```
+
+## Decision-making
+
+### Why React?
+
+While Angular is another good alternative to developing this application in 
+this opportunity the choose was React taking in account my experience in the 
+library
+
+### Why MUI?
+
+The decision of using a library was made thinking about the initial mock 
+passed as requirement for the project, following the recommendation of the 
+same problem and also because it will help to ease the development of the UI
+
+### Why Redux
+
+As a state handler I decide to use Redux since we have a state that is 
+replicated in different parts of my application. The alternative could be 
+Context API, but with Redux was easier to structure and also could be 
+escalated in the future. 
+
+### Why keep hierarchical data
+
+In this case I choose to keep the data without normalizing it because I 
+don't see any improvement in the way I was handling the data so far. And 
+since the data comes from a mocked API it's not possible to have more 
+freedom that justify another structure. Doing in that way only will 
+complicate the frontend processing
